@@ -26,41 +26,72 @@ def eea(z,e): #extended euclid algorithm
     t3= b3
 
     q=math.floor(a3/t3)
-    while(b3 > 1==True):
+    while(b3 > 1):
         print("\nb3 = ", b3)
         q=math.floor(a3/b3)
         print("q=", q)
         print("________")
 
-        b1= a1-t1*q
+        print("a1 =", t1)
+        print("a2 =", t2)
+        print("a3 =", t3, "\n")
 
-        b2= a2-t2*q
+        b1= a1-(t1*q)
+        b2= a2-(t2*q)  
+        b3= a3-(t3*q)
         
-        b3= a3-t3*q
+        print("b1 =", b1)
+        print("b2 =", b2)
+        print("b3 =", b3, "\n")
         
-        print("b1 =", t1)
-        print("b2 =", t2)
-        print("b3 =", t3, "\n")
+        a1= t1
+        a2= t2 
+        a3= t3
 
         t1= b1  
         t2= b2
         t3= b3
         
-        a1= t1
-        a2= t2 
-        a3= t3        
+
+
+    # while(b3 > 1):
+    #     print("\nb3 = ", b3)
+    #     q=math.floor(a3/b3)
+    #     print("q=", q)
+    #     print("________")
+
+
         
-        print("a1 =", a1)
-        print("a2 =", a2)
-        print("a3 =", a3, "\n")
+    #     print("a1 =", t1)
+    #     print("a2 =", t2)
+    #     print("a3 =", t3, "\n")
+
+    #     b1= a1-(t1*q)
+    #     b2= a2-(t2*q)  
+    #     b3= a3-(t3*q)
+        
+    #     print("b1 =", b1)
+    #     print("b2 =", b2)
+    #     print("b3 =", b3, "\n")
+
+    #     t1= b1  
+    #     t2= b2
+    #     t3= b3
+        
+    #     a1= t1
+    #     a2= t2 
+    #     a3= t3        
+    
+
 
     #create a variable t for temporary, then calculate b's 
     #ehile b3 =! 1 , stay in loop 
         # floor(An/bn)
     #t1=b1. t2=b2. t3=b3
     print("_______________________________END ALGORITHM______________________________")
+
     return(b2)
-eea(480,7)
+eea(20,7)
 
 def RSAencrypt(p,q,e,m):
     print("p,q,e,m =", p,q,e,m)
@@ -68,7 +99,7 @@ def RSAencrypt(p,q,e,m):
     print("n= ", n)
     z=(p-1)*(q-1)
     print("z= ", z)
-    d = 3 #eea(z,e) #(e^(-1)) % z # d =eea(z,e) 
+    d = eea(z,e)  # 3
     print("d= ",  d)
 
     ku=[n,e]
@@ -76,8 +107,8 @@ def RSAencrypt(p,q,e,m):
     kr=[n,d]
     print("Kr = ", kr)
 
-    encryptedM = (m^ku[1]) % ku[0]
-    decryptedM = (encryptedM^kr[1]) % kr[0]
+    encryptedM = (m**ku[1]) % ku[0]
+    decryptedM = (encryptedM**kr[1]) % kr[0]
 
     return(encryptedM, decryptedM)
 
@@ -87,7 +118,7 @@ def RSAencrypt2(p,q,e,m):
     print("n= ", n)
     z=(p-1)*(q-1)
     print("z= ", z)
-    d = -137 % 480
+    d = eea(z,e) % 480 #-137 % 480
     print("d= ",  d)
 
     ku=[n,e]
