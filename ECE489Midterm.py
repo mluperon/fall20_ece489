@@ -78,6 +78,7 @@ def RSAencrypt(p,q,e,m):
 
     encryptedM = (m^ku[1]) % ku[0]
     decryptedM = (encryptedM^kr[1]) % kr[0]
+
     return(encryptedM, decryptedM)
 
 def RSAencrypt2(p,q,e,m):
@@ -94,8 +95,8 @@ def RSAencrypt2(p,q,e,m):
     kr=[n,d]
     print("Kr = ", kr)
 
-    encryptedM = (m^ku[1]) % ku[0]
-    decryptedM = (encryptedM^kr[1]) % kr[0]
+    encryptedM = (m**ku[1]) % ku[0]
+    decryptedM = (encryptedM**kr[1]) % kr[0]
     return(encryptedM, decryptedM)
 
 print("1.	p = 3 & q = 11, e = 7; M = 5 ")
